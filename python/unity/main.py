@@ -1,5 +1,4 @@
 import os
-from gettext import Catalog
 
 import daft
 from daft.unity_catalog import UnityCatalog
