@@ -1,3 +1,10 @@
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#   "daft[unity]>=0.6.14",
+# ]
+# ///
+
 import os
 
 import daft
