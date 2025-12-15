@@ -34,6 +34,8 @@ def main():
 
 def run(catalog: Catalog):
     print(catalog)
+    print("namespaces:", catalog.list_namespaces())
+    print("tables:", catalog.list_tables())
 
 
 if __name__ == "__main__":
