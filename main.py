@@ -40,7 +40,8 @@ def run(catalog: Catalog):
     # Read the table as a DataFrame
     table.read()
     df = table.read()
-    df.show()
+    df_limited = df.limit(10)
+    df_limited.show()
 
 
 if __name__ == "__main__":
