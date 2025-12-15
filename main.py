@@ -8,6 +8,7 @@
 import os
 
 import daft
+from daft.catalog import Catalog
 from daft.unity_catalog import UnityCatalog
 
 
@@ -25,8 +26,14 @@ def main():
     print("Hello from unity!")
     print("\nenv:", os.environ)
     set_catalog()
+    for c in daft.list_catalogs():
+        print("catalog:", c)
     catalog = daft.get_catalog("my_unity_catalog")
     print("\ncatalog:", catalog)
+
+
+def run(catalog: Catalog):
+    print(catalog)
 
 
 if __name__ == "__main__":
