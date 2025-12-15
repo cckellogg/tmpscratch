@@ -6,6 +6,7 @@
 # ///
 
 import os
+import sys
 
 import daft
 from daft.catalog import Catalog
@@ -33,6 +34,8 @@ def main():
 
 
 def run(catalog: Catalog):
+    print("running unity catalog!")
+    print(sys.version)
     print(catalog)
     print("tables:", catalog.list_tables())
     table = catalog.get_table("jaytest-unity.daft_test.source_data")
