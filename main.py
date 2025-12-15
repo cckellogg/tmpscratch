@@ -35,6 +35,12 @@ def main():
 def run(catalog: Catalog):
     print(catalog)
     print("tables:", catalog.list_tables())
+    table = catalog.get_table("jaytest-unity.daft_test.source_data")
+
+    # Read the table as a DataFrame
+    table.read()
+    df = table.read()
+    df.show()
 
 
 if __name__ == "__main__":
