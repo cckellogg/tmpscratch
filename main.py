@@ -28,8 +28,8 @@ def main():
     set_catalog()
     for c in daft.list_catalogs():
         print("catalog:", c)
-    catalog = daft.get_catalog("my_unity_catalog")
-    print("\ncatalog:", catalog)
+    # catalog = daft.get_catalog("my_unity_catalog")
+    # print("\ncatalog:", catalog)
 
 
 def run(catalog: Catalog):
