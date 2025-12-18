@@ -44,7 +44,7 @@ def run(catalog: Catalog):
     table = catalog.get_table("jaytest-unity.demo.reddit_irl_images_index")
 
     # Read the table as a DataFrame
-    table.read()
+    # table.read()
     df = table.read(ignore_deletion_vectors=True)
     df_limited = df.limit(10)
     df_limited.show()
