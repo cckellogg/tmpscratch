@@ -44,7 +44,7 @@ def run(catalog: Catalog):
 
     # Read the table as a DataFrame
     table.read()
-    df = table.read()
+    df = table.read(ignore_deletion_vectors=True)
     df_limited = df.limit(10)
     df_limited.show()
 
