@@ -6,5 +6,4 @@ readme = "README.md"
 requires-python = ">= 3.12 , < 3.13"
 dependencies = [
     "daft[unity,deltalake,openai]>=0.7.0",
-    "deltalake==1.0.2"
 ]
