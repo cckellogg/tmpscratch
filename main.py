@@ -9,6 +9,7 @@ import os
 import sys
 
 import daft
+import deltalake
 from daft.catalog import Catalog
 from daft.unity_catalog import UnityCatalog
 
@@ -38,6 +39,7 @@ def run(catalog: Catalog):
     print("running unity catalog!")
     print(sys.version)
     print("daft version", daft.__version__)
+    print("deltalake version", deltalake.__version__)
     print(catalog)
     print("tables:", catalog.list_tables())
     # table = catalog.get_table("jaytest-unity.daft_test.source_data")
