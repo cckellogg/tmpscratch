@@ -21,6 +21,7 @@ def set_catalog():
     unity_catalog = UnityCatalog(endpoint=endpoint, token=apikey)
     catalog = daft.Catalog.from_unity(unity_catalog)
     daft.attach_catalog(catalog, "my_unity_catalog")
+    print("catalog:", catalog)
 
 
 def main():
@@ -38,7 +39,8 @@ def run(catalog: Catalog):
     print(sys.version)
     print(catalog)
     print("tables:", catalog.list_tables())
-    table = catalog.get_table("jaytest-unity.daft_test.source_data")
+    # table = catalog.get_table("jaytest-unity.daft_test.source_data")
+    table = catalog.get_table("jaytest-unity.demo.reddit_irl_images_index")
 
     # Read the table as a DataFrame
     table.read()
