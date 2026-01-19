@@ -14,7 +14,6 @@ def text_embeddings(model="text-embedding-3-small", qwen=False):
     # Create a knowledge base with documents
     df = daft.from_pydict(
         {
-            "doc_id": [1, 2, 3, 4],
             "text": [
                 "Python is a high-level programming language",
                 "Machine learning models require training data",
@@ -25,8 +24,8 @@ def text_embeddings(model="text-embedding-3-small", qwen=False):
     )
 
     if qwen:
-        # m = "Alibaba-NLP/gme-Qwen2-VL-2B-Instruct"
-        m = "Alibaba-NLP/gme-Qwen2-VL-2B-Instruct-Multimodal"
+        m = "Alibaba-NLP/gme-Qwen2-VL-2B-Instruct"
+        # m = "Alibaba-NLP/gme-Qwen2-VL-2B-Instruct-Multimodal"
         df = df.with_column(
             "embeddings",
             embed_text(
@@ -38,9 +37,13 @@ def text_embeddings(model="text-embedding-3-small", qwen=False):
         )
     else:
         df = df.with_column(
-            "embeddings",
-            embed_text(daft.col("text"), model=model),
+            "embeddings", embed_text(df["text"], model="openai/text-embedding-3-small")
         )
+
+        # df = df.with_column(
+        #    "embeddings",
+        #    embed_text(daft.col("text"), model=model),
+        # )
 
     df.show()
 
