@@ -48,7 +48,6 @@ def image_embeddings(model="Alibaba-NLP/gme-Qwen2-VL-2B-Instruct"):
             "image_embeddings",
             embed_image(
                 daft.col("image_resized"),
-                provider="transformers",
                 model=model,
             ),
         )
