@@ -10,7 +10,7 @@ from daft.functions import (
 )
 
 
-def text_embeddings(model="text-embedding-3-small"):
+def text_embeddings(model="text-embedding-3-small", qwen=False):
     # Create a knowledge base with documents
     df = daft.from_pydict(
         {
@@ -24,10 +24,21 @@ def text_embeddings(model="text-embedding-3-small"):
         }
     )
 
-    df = df.with_column(
-        "embeddings",
-        embed_text(daft.col("text"), model=model),
-    )
+    if qwen:
+        df = df.with_column(
+            "embeddings",
+            embed_text(
+                df["text"],
+                provider="daft",
+                model="Alibaba-NLP/gme-Qwen2-VL-2B-Instruct",
+                dimensions=1536,
+            ),
+        )
+    else:
+        df = df.with_column(
+            "embeddings",
+            embed_text(daft.col("text"), model=model),
+        )
 
     df.show()
 
