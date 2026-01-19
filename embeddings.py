@@ -2,7 +2,7 @@ import daft
 from daft.functions import embed_text
 
 
-def text_embeddings():
+def text_embeddings(model="openai/gpt-5-nano"):
     # Create a knowledge base with documents
     df = daft.from_pydict(
         {
@@ -18,7 +18,7 @@ def text_embeddings():
 
     df = df.with_column(
         "embeddings",
-        embed_text(daft.col("text"), model="text-embedding-3-small"),
+        embed_text(daft.col("text"), model=model),
     )
 
     df.show()
