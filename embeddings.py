@@ -25,12 +25,14 @@ def text_embeddings(model="text-embedding-3-small", qwen=False):
     )
 
     if qwen:
+        # m = "Alibaba-NLP/gme-Qwen2-VL-2B-Instruct"
+        m = "Alibaba-NLP/gme-Qwen2-VL-2B-Instruct-Multimodal"
         df = df.with_column(
             "embeddings",
             embed_text(
                 df["text"],
                 provider="daft",
-                model="Alibaba-NLP/gme-Qwen2-VL-2B-Instruct",
+                model=m,
                 dimensions=1536,
             ),
         )
