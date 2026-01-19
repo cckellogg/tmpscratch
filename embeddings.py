@@ -1,3 +1,5 @@
+import os
+
 import daft
 from daft.functions import (
     convert_image,
@@ -31,6 +33,8 @@ def text_embeddings(model="openai/gpt-5-nano"):
 
 
 def image_embeddings(model="Alibaba-NLP/gme-Qwen2-VL-2B-Instruct"):
+    DIMENSIONS = int(os.getenv("DIMENSIONS", "1536"))
+
     df = (
         # Discover a few images from HuggingFace
         daft.from_glob_path("hf://datasets/datasets-examples/doc-image-3/images")
@@ -49,6 +53,7 @@ def image_embeddings(model="Alibaba-NLP/gme-Qwen2-VL-2B-Instruct"):
             embed_image(
                 daft.col("image_resized"),
                 model=model,
+                dimensions=DIMENSIONS,
             ),
         )
     )
